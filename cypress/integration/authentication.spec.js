@@ -37,10 +37,10 @@ describe("authentication suite tests", () => {
         cy.get('[class*="border-danger"]').should('exist')
     })
 
-    it("Should display password form field with red border if password format is invalid", () => {
+    it.only("Should display password form field with red border if password format is invalid", () => {
         cy.get('#signin-email').type('invalidemailformat');
         cy.get('#signin-password').type(validPassword);
         cy.get('[data-qa=signin-submit-button]').click();
-        cy.get('[class*="border-danger"]').should('exist')
+        cy.get('#signin-email').should('have.class', "border-danger");
     })
 })
